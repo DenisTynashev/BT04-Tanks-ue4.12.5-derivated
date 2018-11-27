@@ -77,3 +77,6 @@ DerivedDataCache/*
 #Starter Content
 BattleTank/Content/StarterContent/
 BattleTank/Intermediate/*
+BattleTank/Binaries/*
+BattleTank/Saved/Backup/TankPlayerController_BP_2018-11-27-00-29-18.uasset
+BattleTank/Saved/*
