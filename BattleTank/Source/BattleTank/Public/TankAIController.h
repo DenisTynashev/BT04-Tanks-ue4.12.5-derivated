@@ -3,7 +3,6 @@
 #pragma once
 
 #include "AIController.h"
-//#include "TankAimingComponent.h"
 #include "TankAIController.generated.h"
 
 /**
@@ -14,9 +13,6 @@ class BATTLETANK_API ATankAIController : public AAIController
 {
 	GENERATED_BODY()
 
-protected:
-	//UPROPERTY(BlueprintReadOnly)
-	//UTankAimingComponent* TankAimingComponent = nullptr;
 
 private:
 	virtual void BeginPlay() override;

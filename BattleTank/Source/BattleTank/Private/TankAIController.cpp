@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Battle Tank Game ver 1.0
 
 #include "BattleTank.h"
 #include "TankAIController.h"
@@ -17,14 +17,15 @@ void ATankAIController::Tick(float DeltaTime)
 
 	auto PlayerTank = GetWorld()->GetFirstPlayerController()->GetPawn();	
 	auto ControlledTank = GetPawn();
+	//If there is no player controlled tank
+	if (!ensure(PlayerTank && ControlledTank)) { return; }
 	auto TankAimingComponent = ControlledTank->FindComponentByClass<UTankAimingComponent>();
 	if (!ensure(TankAimingComponent)) { return; }
-
-	if (!ensure(PlayerTank && ControlledTank)) { return; }
+	
 	// Move towards the player
 	MoveToActor(PlayerTank, AcceptanceRadius); // TODO check radius is in cm
 	// Aim towards the player
-	TankAimingComponent->AimAt(PlayerTank->GetActorLocation());
-	//TODO Fixing firing
-	//ControlledTank->Fire(); // TODO limit firing rate
+	TankAimingComponent->AimAt(PlayerTank->GetActorLocation());	
+	//Fire at Player Tank
+	TankAimingComponent->Fire(); // TODO limit firing rate
 }

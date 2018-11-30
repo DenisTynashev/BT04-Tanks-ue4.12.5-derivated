@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Battle Tank Game ver 1.0
 
 #include "BattleTank.h"
 #include "TankBarrel.h"

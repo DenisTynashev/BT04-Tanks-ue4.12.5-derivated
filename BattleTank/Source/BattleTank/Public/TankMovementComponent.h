@@ -1,4 +1,4 @@
-// Copyright EmbraceIT Ltd.
+// Battle Tank Game ver 1.0
 
 #pragma once
 
