@@ -17,11 +17,15 @@ void  UTankTrack::TickComponent(float DeltaTime, enum ELevelTick TickType, FActo
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 	// Calculate the sleepage speed
-	FVector ForwardVector = GetComponentVelocity().GetSafeNormal();
-	FVector RightVector = GetOwner()->GetActorRightVector().GetSafeNormal();	
-	float cos = FVector::DotProduct(ForwardVector, RightVector);
-	float SleepageSpeed = GetComponentVelocity().Size()*cos;
-	UE_LOG(LogTemp, Warning, TEXT("Cosinus: %f, SleepageSpeed: %f"), cos, SleepageSpeed);
+	FVector ForwardVector = GetComponentVelocity();
+	FVector RightVector = GetOwner()->GetActorRightVector();	
+	float SleepageSpeed = FVector::DotProduct(ForwardVector, RightVector);
+	//float SleepageSpeed = GetComponentVelocity().Size()*cos;
+	auto CorrectionAcceleration = (-SleepageSpeed / DeltaTime)*GetRightVector();
+
+	auto TankRoot = Cast<UStaticMeshComponent>(GetOwner()->GetRootComponent());
+	auto CorrectionForce = (TankRoot->GetMass()*CorrectionAcceleration)/2; // two tracks
+	TankRoot->AddForce(CorrectionForce);
 }
 
 void UTankTrack::SetThrottle(float Throttle)
