@@ -35,8 +35,10 @@ public:
 
 	void AimAt(FVector HitLocation);
 
+	UFUNCTION(BlueprintCallable, Category = "Firing")
 	EFiringState GetFiringState() const;
 
+	UFUNCTION(BlueprintCallable, Category = "Firing")
 	int GetAmmo() const;
 
 protected:
@@ -44,7 +46,6 @@ protected:
 	EFiringState FiringState = EFiringState::Aiming;
 
 	//Ammo of this Tank
-	UPROPERTY(BlueprintReadOnly, Category = "State")
 	int Ammo = 3;
 	
 
