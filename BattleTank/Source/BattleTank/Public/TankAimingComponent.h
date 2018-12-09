@@ -39,15 +39,11 @@ public:
 	EFiringState GetFiringState() const;
 
 	UFUNCTION(BlueprintCallable, Category = "Firing")
-	int GetAmmo() const;
+	int32 GetAmmo() const;
 
 protected:
 	UPROPERTY(BlueprintReadOnly, Category = "State")
 	EFiringState FiringState = EFiringState::Aiming;
-
-	//Ammo of this Tank
-	int Ammo = 3;
-	
 
 private:
 	// Sets default values for this component's properties
@@ -69,6 +65,10 @@ private:
 	
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 	float ReloadTimeInSeconds = 3;
+
+	//Ammo of this Tank
+	UPROPERTY(EditDefaultsOnly, Category = "Firing")
+	int32 Ammo = 3;
 
 	//Last Time, when the barrel was reloaded. This time is used to define if tank is reloaded
 	double LastFireTime = 0;
