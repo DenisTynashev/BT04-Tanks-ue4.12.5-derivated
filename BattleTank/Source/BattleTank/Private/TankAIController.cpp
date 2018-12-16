@@ -3,6 +3,7 @@
 #include "BattleTank.h"
 #include "TankAIController.h"
 #include "TankAimingComponent.h"
+#include "Tank.h"
 
 
 void ATankAIController::BeginPlay()
@@ -10,12 +11,31 @@ void ATankAIController::BeginPlay()
 	Super::BeginPlay();
 }
 
+void ATankAIController::SetPawn(APawn* InPawn)
+{
+	Super::SetPawn(InPawn);
+	if (InPawn)
+	{
+		auto PossesedTank = Cast<ATank>(InPawn);
+		if (!ensure(PossesedTank)) { return; }
+		PossesedTank->OnTankDied.AddUniqueDynamic(this, &ATankAIController::OnPossesedTankDeath);
+	}
+}
+
+//Delegate Method
+void ATankAIController::OnPossesedTankDeath(FString TankName)
+{
+	ATank	* PossesedTank = Cast<ATank>(GetPawn());
+	if (!PossesedTank) { return; }
+	PossesedTank->DetachFromControllerPendingDestroy();
+}
+
 // Called every frame
 void ATankAIController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	auto PlayerTank = GetWorld()->GetFirstPlayerController()->GetPawn();	
+	auto PlayerTank = GetWorld()->GetFirstPlayerController()->GetPawn();
 	auto ControlledTank = GetPawn();
 	//If there is no player controlled tank
 	if (!ensure(PlayerTank && ControlledTank)) { return; }

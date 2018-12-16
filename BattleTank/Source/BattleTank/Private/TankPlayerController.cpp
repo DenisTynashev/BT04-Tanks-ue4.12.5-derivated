@@ -1,6 +1,7 @@
 // Battle Tank Game ver 1.0
 
 #include "BattleTank.h"
+#include "Tank.h"
 #include "TankPlayerController.h"
 #include "TankAimingComponent.h"
 
@@ -20,6 +21,22 @@ void ATankPlayerController::Tick(float DeltaTime)
 	AimTowardsCrosshair();
 }
 
+void ATankPlayerController::SetPawn(APawn* InPawn)
+{
+	Super::SetPawn(InPawn);
+	if (InPawn)
+	{
+		auto PossesedTank = Cast<ATank>(InPawn);
+		if (!PossesedTank) { return; }
+		PossesedTank->OnTankDied.AddUniqueDynamic(this, &ATankPlayerController::OnPossesedTankDeath);
+	}
+}
+
+//Delegate Method
+void ATankPlayerController::OnPossesedTankDeath(FString TankName)
+{
+	StartSpectatingOnly();
+}
 
 void ATankPlayerController::AimTowardsCrosshair()
 {
