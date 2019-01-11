@@ -31,7 +31,6 @@ private:
 	
 	UPROPERTY(VisibleAnywhere, Category = "Health")
 		int32 CurrentHealth;
-	
 
 protected:
 	virtual float TakeDamage(float Damage, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser) override;

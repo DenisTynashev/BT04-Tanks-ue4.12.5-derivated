@@ -78,5 +78,5 @@ private:
 
 	FVector AimDirection = FVector (0.0f, 0.0f, 0.0f);
 	
-	void MoveBarrelTowards(FVector AimDirection);
+	void MoveBarrelTowards(FVector Aim);
 };

@@ -2,19 +2,31 @@
 
 #include "BattleTank.h"
 #include "Tank.h"
+#include "Classes/Components/AudioComponent.h"
+
 
 
 // Sets default values
 ATank::ATank()
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = false;
+	PrimaryActorTick.bCanEverTick = false;	
 }
 
 void ATank::BeginPlay()
 {
 	Super::BeginPlay();
-	CurrentHealth = StartingHealth;
+	CurrentHealth = StartingHealth;	
+	/*auto TempRootComponent = GetRootComponent();
+	if (!ensure(TempRootComponent)) {return;}
+	UE_LOG(LogTemp, Warning, TEXT("RootComponents Name: %s"), *(TempRootComponent->GetName()));
+	SpawnPoint = NewObject<USpawnPoint>(this);
+	SpawnPoint->RegisterComponent();
+	SpawnPoint->AttachToComponent(TempRootComponent, FAttachmentTransformRules::KeepRelativeTransform);
+	if (!ensure(SpawnPoint)) { return; }
+	UE_LOG(LogTemp, Warning, TEXT("New component name: %s"), *(SpawnPoint->GetName()));
+	auto Parent = SpawnPoint->GetAttachParent();
+	UE_LOG(LogTemp, Warning, TEXT("Parent name: %s"), *(Parent->GetName()));*/
 }
 
 float ATank::TakeDamage(float Damage, FDamageEvent const & DamageEvent, AController * EventInstigator, AActor * DamageCauser)
