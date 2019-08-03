@@ -25,7 +25,7 @@ public:
 
 private:
 	UPROPERTY(VisibleAnywhere, Category = "Components")
-		UPhysicsConstraintComponent * MassAxelConstraint = nullptr;
+		UPhysicsConstraintComponent * MassAxleConstraint = nullptr;
 	
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 		USphereComponent * Axle = nullptr;
@@ -35,6 +35,7 @@ private:
 
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 		USphereComponent * Wheel = nullptr;
+		//UPrimitiveComponent* Wheel = nullptr;
 
 	void SetupConstrain();
 };
