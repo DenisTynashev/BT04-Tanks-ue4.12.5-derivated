@@ -16,11 +16,11 @@
 	},
 	"BuildProducts": [
 		{
-			"Path": "$(ProjectDir)/Binaries/Win64/UE4Editor-BattleTank-4944.dll",
+			"Path": "$(ProjectDir)/Binaries/Win64/UE4Editor-BattleTank-4913.dll",
 			"Type": "DynamicLibrary"
 		},
 		{
-			"Path": "$(ProjectDir)/Binaries/Win64/UE4Editor-BattleTank-4944.pdb",
+			"Path": "$(ProjectDir)/Binaries/Win64/UE4Editor-BattleTank-4913.pdb",
 			"Type": "SymbolFile"
 		},
 		{

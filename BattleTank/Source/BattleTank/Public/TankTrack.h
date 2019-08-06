@@ -26,19 +26,21 @@ private:
 	//Constructor
 	UTankTrack();
 
+	//
+	TArray<class ASprungWheel*> GetWheels()const;
 	//Tick	
 	//virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
 
-	void ApplySidewaysForce();
+	//void ApplySidewaysForce();
 
 	//Begin Play
 	virtual void BeginPlay() override;
 
 	//
-	void DriveTrack();
+	void DriveTrack(float CurrentThrottle);
 
-	float CurrentThrottle = 0.f;
+	//float CurrentThrottle = 0.f;
 
-	UFUNCTION()
-	void OnHit (UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit);
+	/*UFUNCTION()
+	void OnHit (UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit);*/
 };

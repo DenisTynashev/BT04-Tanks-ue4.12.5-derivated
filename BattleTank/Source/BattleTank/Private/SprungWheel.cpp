@@ -28,6 +28,11 @@ ASprungWheel::ASprungWheel()
 	Wheel->AttachToComponent(Axle, FAttachmentTransformRules::KeepRelativeTransform);
 }
 
+void ASprungWheel::AddDrivingForce(float ForceMagnitude)
+{
+	Wheel->AddForce(Axle->GetForwardVector()*ForceMagnitude);
+}
+
 // Called when the game starts or when spawned
 void ASprungWheel::BeginPlay()
 {
