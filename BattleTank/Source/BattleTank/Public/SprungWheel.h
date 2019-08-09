@@ -15,14 +15,14 @@ public:
 	// Sets default values for this actor's properties
 	ASprungWheel();
 	void AddDrivingForce(float ForceMagnitude);
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
+
+
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
 
 private:
 	UPROPERTY(VisibleAnywhere, Category = "Components")
@@ -38,5 +38,13 @@ private:
 		USphereComponent * Wheel = nullptr;
 		//UPrimitiveComponent* Wheel = nullptr;
 
+	float TotalForceMagnitudeThisFrame = 0;
+
 	void SetupConstrain();
+
+	UFUNCTION()
+	void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+
+	//
+	void ApplyForce();
 };

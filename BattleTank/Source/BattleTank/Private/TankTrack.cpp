@@ -84,7 +84,4 @@ void UTankTrack::DriveTrack(float CurrentThrottle)
 	{
 		Wheel->AddDrivingForce(ForcePerWheel);
 	}
-	/*auto ForceLocation = GetComponentLocation();
-	auto TankRoot = Cast<UPrimitiveComponent>(GetOwner()->GetRootComponent());
-	TankRoot->AddForceAtLocation(ForceApplied, ForceLocation);*/
 }
